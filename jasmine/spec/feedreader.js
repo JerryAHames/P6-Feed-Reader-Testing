@@ -68,14 +68,31 @@ $(function() {
           */
     });
     /* TODO: Write a new test suite named "Initial Entries" */
-    describe('Initial Entries', function() {
+    describe('Initial Entries', function(done) {
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         var feed;
+
+         beforeEach(function(done) {
+           feed = $('.feed');
+             loadFeed(0, function() {
+              done();
+            });
+         });
+
+         it('are loaded', function(done) {
+           var entries = $('.entry');
+           console.log(entries.length);
+           expect(entries.length).toBeDefined();
+           expect(entries.length).toBeGreaterThan(0);
+           done();
+         });
     });
+
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
