@@ -85,6 +85,7 @@ $(function() {
 
         it('is visible after clicking menu icon', function(done) {
             expect(isMenuVisible()).toBe(false);
+            //When the user clicks the icon, this is the code that is called.
             $('body').toggleClass('menu-hidden');
 
             setTimeout(function() {
@@ -141,7 +142,7 @@ $(function() {
 
         beforeEach(function(done) {
             title = $('.header-title');
-            prevEntries = $('.feed').html();
+            prevEntries = $('.feed').html();//get the html at the start
             loadFeed(1, function() {
                 done();
             });
