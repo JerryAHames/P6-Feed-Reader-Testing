@@ -97,6 +97,13 @@ $(function() {
                 done();
             }, 455); //the time out is .2 seconds, or 200 ms. So lets wait 225 for good measure.
         });
+
+        //Check to make sure all of the feeds are present and there aren't analyze
+        //extras.
+        it('contains all feeds', function() {
+            var menuElementCount = $('.feed-list li').length;
+            expect(menuElementCount).toBe(allFeeds.length);
+        });
     });
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
