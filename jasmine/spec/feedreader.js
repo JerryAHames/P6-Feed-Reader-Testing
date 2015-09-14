@@ -82,5 +82,24 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         var title;
+         var prevEntries;
+
+          beforeEach(function(done) {
+            title = $('.header-title');
+            prevEntries = $('.feed').html();
+              loadFeed(1, function() {
+               done();
+             });
+          });
+
+
+          it('displays new content after load', function(done) {
+            //Does the title change?
+            expect(title.html()).toBe(allFeeds[1].name);
+            //Do the entries change?
+            expect(prevEntries).not.toBe($('.feed').html());
+            done();
+          });
      });
 }());
