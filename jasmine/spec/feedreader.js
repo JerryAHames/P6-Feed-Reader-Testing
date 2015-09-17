@@ -104,18 +104,15 @@ $(function() {
         //Before each test is run, call the "loadFeed" function and pass in a
         //function parameter that will tell the test when it is done.
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         //When the before each is done, this will be called. Ensure that the
         //length of the entries element is greater than 0.
-        it('are loaded', function(done) {
+        it('are loaded', function() {
             var entries = $('.entry');
             expect(entries.length).toBeDefined();
             expect(entries.length).toBeGreaterThan(0);
-            done();
         });
     });
 
@@ -146,12 +143,11 @@ $(function() {
         });
 
 
-        it('displays new content after load', function(done) {
+        it('displays new content after load', function() {
             //Does the title change?
             expect(titleElement.html()).toBe(allFeeds[1].name);
             //Do the entries change?
             expect(prevEntries).not.toBe(feedElement.html());
-            done();
         });
     });
 }());
